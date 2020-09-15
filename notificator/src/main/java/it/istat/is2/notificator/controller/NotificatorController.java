@@ -7,13 +7,8 @@ import it.istat.is2.notificator.repository.ProcessRepository;
 import it.istat.is2.notificator.response.TaskStatusResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.config.Task;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -37,10 +32,18 @@ public class NotificatorController {
             return ResponseEntity.of(Optional.ofNullable(new TaskStatusResponse.Builder().processId(id).status(TaskStatus.fromCode(optionalProcess.get().getStatus())).build()));
         } else {
             throw new NoDataException("Impossibile trovare il processo con id : " + id);
-            /*throw new ResponseStatusException(
-                    HttpStatus.NO_CONTENT, "Impossibile trovare il processo con id : " + id));
-
-             */
         }
     }
+
+    @PostMapping("/task")
+    public ResponseEntity<TaskStatus> createTask(@RequestBody TaskStatus taskStatus) {
+        throw new IllegalStateException("not implemented yet");
+    }
+
+    @DeleteMapping("/task/{id}")
+    public ResponseEntity<TaskStatus> deleteTask(@PathVariable("id") Long id) {
+        throw new IllegalStateException("not implemented yet");
+    }
+
+
 }
