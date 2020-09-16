@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../contingency_table/contingency_table.iml" filepath="$PROJECT_DIR$/../contingency_table/contingency_table.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../notificator/notificator.iml" filepath="$PROJECT_DIR$/../notificator/notificator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sample_source/sample_source.iml" filepath="$PROJECT_DIR$/../sample_source/sample_source.iml" />
+    </modules>
+  </component>
+</project>

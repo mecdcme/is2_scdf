@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="contingency_table" />
+        <module name="notificator" />
+        <module name="sample_source" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="contingency_table" target="11" />
+      <module name="notificator" target="11" />
+      <module name="sample_source" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="contingency_table" options="-parameters" />
+      <module name="notificator" options="-parameters" />
+      <module name="sample_source" options="-parameters" />
+    </option>
+  </component>
+</project>

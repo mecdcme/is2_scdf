@@ -13,17 +13,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/task")
 @Slf4j
-public class NotificatorController {
+public class TaskController {
 
     private final ProcessRepository processRepository;
 
     @Autowired
-    public NotificatorController(ProcessRepository processRepository) {
+    public TaskController(ProcessRepository processRepository) {
         this.processRepository = processRepository;
     }
 
-    @GetMapping("/task/status/{id}")
+    @GetMapping("/status/{id}")
     public ResponseEntity<TaskStatusResponse> getTaskStatus(@PathVariable("id") Long id) {
 
         Optional<ProcessEntity> optionalProcess = this.processRepository.findById(id);
@@ -35,12 +36,12 @@ public class NotificatorController {
         }
     }
 
-    @PostMapping("/task")
+    @PostMapping
     public ResponseEntity<TaskStatus> createTask(@RequestBody TaskStatus taskStatus) {
         throw new IllegalStateException("not implemented yet");
     }
 
-    @DeleteMapping("/task/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<TaskStatus> deleteTask(@PathVariable("id") Long id) {
         throw new IllegalStateException("not implemented yet");
     }
