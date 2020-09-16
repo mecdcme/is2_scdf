@@ -6,6 +6,9 @@
         <option value="$PROJECT_DIR$/../notificator/pom.xml" />
         <option value="$PROJECT_DIR$/../contingency_table/pom.xml" />
         <option value="$PROJECT_DIR$/../sample_source/pom.xml" />
+        <option value="$PROJECT_DIR$/../fellegi_sunter/pom.xml" />
+        <option value="$PROJECT_DIR$/../matching_records/pom.xml" />
+        <option value="$PROJECT_DIR$/../deterministic_record_linkage/pom.xml" />
       </list>
     </option>
   </component>

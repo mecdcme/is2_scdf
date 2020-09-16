@@ -11,7 +11,6 @@ import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.messaging.handler.annotation.SendTo;
 
 import java.util.HashMap;
-import java.util.Random;
 
 @SpringBootApplication
 @EnableBinding(Processor.class)
