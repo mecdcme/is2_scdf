@@ -29,9 +29,13 @@ public class ContingencyTableService {
     @Autowired
     private HttpSession httpSession;
 
+    @Autowired
+    private NotificatorService notificatorService;
+
     public static final Long STEP_INSTANCE_ID = 11L;
 
     public void contingecyTable(Long id) throws Exception {
+
 
         SessionBean sessionBean = new SessionBean();
         sessionBean.setId(id);
@@ -39,6 +43,9 @@ public class ContingencyTableService {
         
         DataProcessing elaborazione = workflowService.findDataProcessing(id);
         StepInstance stepInstance = stepInstanceDao.findById(STEP_INSTANCE_ID).orElseThrow();
+
+        notificatorService.createTask(elaborazione.getId(), stepInstance.getId());
+
         this.doStep(elaborazione, stepInstance);
     }
 
@@ -46,10 +53,13 @@ public class ContingencyTableService {
         EngineService engine = engineFactory.getEngine(stepInstance.getAppService().getEngineType());
 
         try {
+            notificatorService.runningTask(elaborazione.getId(), stepInstance.getId());
             engine.init(elaborazione, stepInstance);
             engine.doAction();
             engine.processOutput();
+            notificatorService.endTask(elaborazione.getId(), stepInstance.getId());
         } catch (Exception e) {
+            notificatorService.errorTask(elaborazione.getId(), stepInstance.getId());
             e.printStackTrace();
             throw (e);
         } finally {
