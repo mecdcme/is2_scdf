@@ -1,21 +1,28 @@
 package it.istat.is2.contingency_table;
 
-import it.istat.is2.contingency_table.input.TaskDetail;
-import it.istat.is2.contingency_table.output.ContingencyTableOutput;
+import it.istat.is2.contingency_table.service.ContingencyTableService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.messaging.handler.annotation.SendTo;
 
-import java.util.HashMap;
-
+@ComponentScan("it.istat")
 @SpringBootApplication
 @EnableBinding(Processor.class)
 @Slf4j
 public class ContingencyTableApplication {
+
+	private final ContingencyTableService contingencyTableService;
+
+	@Autowired
+	public ContingencyTableApplication(ContingencyTableService contingencyTableService) {
+		this.contingencyTableService = contingencyTableService;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ContingencyTableApplication.class, args);
@@ -23,17 +30,13 @@ public class ContingencyTableApplication {
 
 	@StreamListener(Processor.INPUT)
 	@SendTo(Processor.OUTPUT)
-	public ContingencyTableOutput process(TaskDetail usageDetail) {
+	public String process(String parameters) throws Exception {
 
-		ContingencyTableOutput output = new ContingencyTableOutput();
-		output.setId(1L);
-		output.setSampleString("stringa casuale");
-		output.setData(new HashMap<>());
-		output.getData().put(1L, "S1");
-		output.getData().put(2L, "S2");
-		output.getData().put(3L, "S3");
-		output.getData().put(4L, "S4");
+		log.info("parameters received : {}", parameters);
 
-		return output;
+		var id = Long.parseLong(parameters);
+		this.contingencyTableService.contingecyTable(id);
+
+		return parameters;
 	}
 }
