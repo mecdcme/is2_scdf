@@ -35,8 +35,6 @@ public class ContingencyTableService {
     public static final Long STEP_INSTANCE_ID = 11L;
 
     public void contingecyTable(Long id) throws Exception {
-
-
         SessionBean sessionBean = new SessionBean();
         sessionBean.setId(id);
         this.httpSession.setAttribute("sessionBean", sessionBean);
