@@ -26,8 +26,8 @@ public class FellegiSunterService {
     @Autowired
     EngineFactory engineFactory;
 
-    @Autowired
-    private HttpSession httpSession;
+    //@Autowired
+    //private HttpSession httpSession;
 
     @Autowired
     private NotificatorService notificatorService;
@@ -36,11 +36,11 @@ public class FellegiSunterService {
 
     public void fellegiSunter(Long id) throws Exception {
 
-
+        /*
         SessionBean sessionBean = new SessionBean();
         sessionBean.setId(id);
         this.httpSession.setAttribute("sessionBean", sessionBean);
-        
+        */
         DataProcessing elaborazione = workflowService.findDataProcessing(id);
         StepInstance stepInstance = stepInstanceDao.findById(STEP_INSTANCE_ID).orElseThrow();
 

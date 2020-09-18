@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -26,8 +27,8 @@ public class ContingencyTableService {
     @Autowired
     EngineFactory engineFactory;
 
-    @Autowired
-    private HttpSession httpSession;
+    //@Autowired
+    //private HttpSession httpSession;
 
     @Autowired
     private NotificatorService notificatorService;
@@ -35,10 +36,7 @@ public class ContingencyTableService {
     public static final Long STEP_INSTANCE_ID = 11L;
 
     public void contingecyTable(Long id) throws Exception {
-        SessionBean sessionBean = new SessionBean();
-        sessionBean.setId(id);
-        this.httpSession.setAttribute("sessionBean", sessionBean);
-        
+
         DataProcessing elaborazione = workflowService.findDataProcessing(id);
         StepInstance stepInstance = stepInstanceDao.findById(STEP_INSTANCE_ID).orElseThrow();
 
