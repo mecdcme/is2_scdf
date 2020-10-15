@@ -1,5 +1,6 @@
 package it.istat.is2.matching_records.service;
 
+import it.istat.is2.matching_records.client.WorkFlowMonitorClient;
 import it.istat.is2.matching_records.response.TaskStatus;
 import it.istat.is2.matching_records.response.TaskStatusRequest;
 import it.istat.is2.matching_records.response.TaskStatusResponse;
@@ -18,43 +19,32 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class NotificatorService {
 
-    @Value("${notificator.url}")
-    private String notificatorUrl;
+    private final WorkFlowMonitorClient client;
+    private final RestTemplate restTemplate;
 
     @Autowired
-    private RestTemplate restTemplate;
+    public NotificatorService(WorkFlowMonitorClient client, RestTemplate restTemplate) {
+        this.client = client;
+        this.restTemplate = restTemplate;
+    }
 
     public void createTask(Long idElaborazione, Long idStepInstance) {
-        this.callNotificator(idElaborazione, idStepInstance, TaskStatus.CREATED);
+        this.callNotificator(idElaborazione, idStepInstance, 10);
     }
 
     public void runningTask(Long idElaborazione, Long idStepInstance) {
-        this.callNotificator(idElaborazione, idStepInstance, TaskStatus.STARTED);
+        this.callNotificator(idElaborazione, idStepInstance, 20);
     }
 
     public void endTask(Long idElaborazione, Long idStepInstance) {
-        this.callNotificator(idElaborazione, idStepInstance, TaskStatus.ENDED);
+        this.callNotificator(idElaborazione, idStepInstance, 30);
     }
 
     public void errorTask(Long idElaborazione, Long idStepInstance) {
-        this.callNotificator(idElaborazione, idStepInstance, TaskStatus.ERROR);
+        this.callNotificator(idElaborazione, idStepInstance, 900);
     }
 
-    private void callNotificator(Long idElaborazione, Long idStepInstance, TaskStatus status) {
-
-        var object = new TaskStatusRequest();
-        object.setIdElaborazione(idElaborazione);
-        object.setIdStepInstance(idStepInstance);
-        object.setTaskStatus(status);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<?> entity = new HttpEntity<>(object, headers);
-
-        TaskStatusResponse response = restTemplate.exchange(this.notificatorUrl + "/task", HttpMethod.POST, entity, new ParameterizedTypeReference<TaskStatusResponse>() {
-        }).getBody();
-
-
-        log.info("reponse = {}", response);
+    private void callNotificator(Long idElaborazione, Long idStepInstance, int codeStatus) {
+        this.client.updateStatus(codeStatus, idElaborazione, idStepInstance);
     }
 }

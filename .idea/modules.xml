@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/contingency_table/contingency_table.iml" filepath="$PROJECT_DIR$/contingency_table/contingency_table.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deterministic_record_linkage/deterministic_record_linkage.iml" filepath="$PROJECT_DIR$/deterministic_record_linkage/deterministic_record_linkage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fellegi_sunter/fellegi_sunter.iml" filepath="$PROJECT_DIR$/fellegi_sunter/fellegi_sunter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/is2-legacy-library/is2-library.iml" filepath="$PROJECT_DIR$/is2-legacy-library/is2-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/is2_scdf.iml" filepath="$PROJECT_DIR$/.idea/is2_scdf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/matching_records/matching_records.iml" filepath="$PROJECT_DIR$/matching_records/matching_records.iml" />
+    </modules>
+  </component>
+</project>
