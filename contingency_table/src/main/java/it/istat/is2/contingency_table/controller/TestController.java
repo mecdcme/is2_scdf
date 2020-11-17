@@ -18,7 +18,6 @@ public class TestController {
 
     private final ContingencyTableService contingencyTableService;
 
-    
 
     @Autowired
     public TestController(ContingencyTableService contingencyTableService) {
@@ -28,7 +27,6 @@ public class TestController {
     @GetMapping("/test")
     public ResponseEntity<String> test(@RequestParam("id") Long id) throws Exception {
 
-        
 
         log.info("started method test .. whit id = {}", id);
 

@@ -27,7 +27,8 @@ public class WorkFlowMonitorClient {
 
         public static final Long serialVersionUID = 1L;
 
-        private WorkFlowStatutsCreateRequest() {  }
+        private WorkFlowStatutsCreateRequest() {
+        }
 
         private Long workSessionId;
         private Long businessProcessId;
@@ -76,6 +77,7 @@ public class WorkFlowMonitorClient {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<?> entity = new HttpEntity<>(request, headers);
 
-        restTemplate.exchange(this.workflowMonitorUrl, HttpMethod.POST, entity, new ParameterizedTypeReference<Boolean>() { }).getBody();
+        restTemplate.exchange(this.workflowMonitorUrl, HttpMethod.POST, entity, new ParameterizedTypeReference<Boolean>() {
+        }).getBody();
     }
 }

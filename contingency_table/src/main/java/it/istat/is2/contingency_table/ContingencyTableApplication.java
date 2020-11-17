@@ -17,27 +17,27 @@ import org.springframework.messaging.handler.annotation.SendTo;
 @Slf4j
 public class ContingencyTableApplication {
 
-	private final ContingencyTableService contingencyTableService;
+    private final ContingencyTableService contingencyTableService;
 
-	@Autowired
-	public ContingencyTableApplication(ContingencyTableService contingencyTableService) {
-		this.contingencyTableService = contingencyTableService;
-	}
+    @Autowired
+    public ContingencyTableApplication(ContingencyTableService contingencyTableService) {
+        this.contingencyTableService = contingencyTableService;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(ContingencyTableApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ContingencyTableApplication.class, args);
+    }
 
-	@StreamListener(Processor.INPUT)
-	@SendTo(Processor.OUTPUT)
-	public String process(String parameters) throws Exception {
+    @StreamListener(Processor.INPUT)
+    @SendTo(Processor.OUTPUT)
+    public String process(String parameters) throws Exception {
 
-		log.info("parameters received : {}", parameters);
+        log.info("parameters received : {}", parameters);
 
-		var id = Long.parseLong(parameters);
-		this.contingencyTableService.contingecyTable(id);
+        var id = Long.parseLong(parameters);
+        this.contingencyTableService.contingecyTable(id);
 
-		return parameters;
-	}
+        return parameters;
+    }
 
 }

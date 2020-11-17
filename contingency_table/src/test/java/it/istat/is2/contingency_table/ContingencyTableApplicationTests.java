@@ -20,22 +20,22 @@ import static org.junit.Assert.assertTrue;
 @Slf4j
 public class ContingencyTableApplicationTests {
 
-	@Autowired
-	private Processor processor;
+    @Autowired
+    private Processor processor;
 
-	@Autowired
-	private MessageCollector messageCollector;
+    @Autowired
+    private MessageCollector messageCollector;
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
-	@Test
-	public void testUsageCostProcessor() throws Exception {
-		this.processor.input().send(MessageBuilder.withPayload("{\"id\":3,\"type\":\"prova\"}").build());
-		Message message = this.messageCollector.forChannel(this.processor.output()).poll(1, TimeUnit.SECONDS);
-		log.info("message = {}", message);
-		assertTrue(message.getPayload().toString().contains("sampleString"));
-	}
+    @Test
+    public void testUsageCostProcessor() throws Exception {
+        this.processor.input().send(MessageBuilder.withPayload("{\"id\":3,\"type\":\"prova\"}").build());
+        Message message = this.messageCollector.forChannel(this.processor.output()).poll(1, TimeUnit.SECONDS);
+        log.info("message = {}", message);
+        assertTrue(message.getPayload().toString().contains("sampleString"));
+    }
 
 }
