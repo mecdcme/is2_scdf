@@ -1,13 +1,13 @@
 /**
  * Copyright 2019 ISTAT
- *
+ * <p>
  * Licensed under the EUPL, Version 1.1 or – as soon they will be approved by
  * the European Commission - subsequent versions of the EUPL (the "Licence");
  * You may not use this work except in compliance with the Licence. You may
  * obtain a copy of the Licence at:
- *
+ * <p>
  * http://ec.europa.eu/idabc/eupl5
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the Licence is distributed on an "AS IS" basis, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -41,17 +41,17 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "IS2_BUSINESS_PROCESS")
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BusinessProcess extends AbstractDomainObject implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @Column(name="LABEL")
+    @Column(name = "LABEL")
     private String label;
-    @Column(name="ORDER_CODE")
+    @Column(name = "ORDER_CODE")
     private Short order;
-   
+
     @ManyToMany(mappedBy = "businessProcesses")
     private List<BusinessFunction> businessFunctions;
 
@@ -67,10 +67,8 @@ public class BusinessProcess extends AbstractDomainObject implements Serializabl
     @JsonBackReference
     @OneToMany(mappedBy = "businessProcessParent")
     private List<BusinessProcess> businessSubProcesses = new ArrayList<>();
-    
-    
 
-    
+
     public BusinessProcess() {
     }
 

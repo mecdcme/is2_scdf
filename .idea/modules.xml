@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/contingency_table/contingency_table.iml" filepath="$PROJECT_DIR$/contingency_table/contingency_table.iml" />
       <module fileurl="file://$PROJECT_DIR$/deterministic_record_linkage/deterministic_record_linkage.iml" filepath="$PROJECT_DIR$/deterministic_record_linkage/deterministic_record_linkage.iml" />
       <module fileurl="file://$PROJECT_DIR$/fellegi_sunter/fellegi_sunter.iml" filepath="$PROJECT_DIR$/fellegi_sunter/fellegi_sunter.iml" />

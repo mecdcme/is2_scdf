@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="fellegi_sunter" />
         <module name="matching_records" />
+        <module name="config-server" />
         <module name="is2-library" />
         <module name="contingency_table" />
         <module name="deterministic_record_linkage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="config-server" target="11" />
       <module name="contingency_table" target="11" />
       <module name="deterministic_record_linkage" target="11" />
       <module name="fellegi_sunter" target="11" />
@@ -24,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-server" options="-parameters" />
       <module name="contingency_table" options="-parameters" />
       <module name="deterministic_record_linkage" options="-parameters" />
       <module name="fellegi_sunter" options="-parameters" />

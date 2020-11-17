@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DeterministicRecordLinkageApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DeterministicRecordLinkageApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DeterministicRecordLinkageApplication.class, args);
+    }
 
 }
