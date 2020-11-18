@@ -43,6 +43,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+            <version>3.0.8.RELEASE</version>
         </dependency>
 
         <dependency>
