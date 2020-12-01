@@ -9,8 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.Serializable;
-
 @Component
 public class WorkFlowMonitorClient {
     private final RestTemplate restTemplate;
@@ -23,17 +21,7 @@ public class WorkFlowMonitorClient {
         this.restTemplate = restTemplate;
     }
 
-    static class WorkFlowStatutsCreateRequest implements Serializable {
-
-        public static final Long serialVersionUID = 1L;
-
-        private WorkFlowStatutsCreateRequest() {
-        }
-
-        private Long workSessionId;
-        private Long businessProcessId;
-        private ProcessStatus status;
-    }
+    
 
     enum ProcessStatus {
         CREATED(10),
@@ -69,9 +57,9 @@ public class WorkFlowMonitorClient {
 
     public void updateStatus(Integer processStatusCode, Long workSessionId, Long businessProcessId) {
         WorkFlowStatutsCreateRequest request = new WorkFlowStatutsCreateRequest();
-        request.businessProcessId = businessProcessId;
-        request.workSessionId = workSessionId;
-        request.status = ProcessStatus.fromCode(processStatusCode);
+        request.setBusinessProcessId(businessProcessId) ;
+        request.setWorkSessionId(workSessionId); 
+        request.setStatus(ProcessStatus.fromCode(processStatusCode));
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
