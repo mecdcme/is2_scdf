@@ -45,9 +45,9 @@ public class ContingencyTableApplication {
 
         log.info("parameters received : {}", parameters);
         StreamInvokeParameter streamInvokeParameter = new StreamInvokeParameter(parameters);
-
-        var id = streamInvokeParameter.getId();
         AuthenticationTokenHolder.getInstance().setAuthenticationToken(streamInvokeParameter.getAuthorizationToken());
+        var id = streamInvokeParameter.getId();
+
         this.contingencyTableService.contingecyTable(id);
 
         return parameters;
