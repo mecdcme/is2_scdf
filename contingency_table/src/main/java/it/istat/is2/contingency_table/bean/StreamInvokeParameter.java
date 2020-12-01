@@ -14,14 +14,10 @@ public class StreamInvokeParameter implements Serializable {
     private String authorizationToken;
 
     public StreamInvokeParameter(String rawParameter) {
+
         String[] params = rawParameter.split("\\|");
         this.id = Long.parseLong(params[0]);
         this.authorizationToken = params[1];
 
-    }
-
-    public static void main(String[] args) {
-        StreamInvokeParameter d = new StreamInvokeParameter("4|hfdwejfhewfhewfhejwfhewhfi");
-        System.out.println(d);
     }
 }
