@@ -41,13 +41,14 @@ public class ContingencyTableApplication {
 
     @StreamListener(Processor.INPUT)
     @SendTo(Processor.OUTPUT)
-    public StreamInvokeParameter process(StreamInvokeParameter parameters) throws Exception {
+    public String process(String parameters) throws Exception {
 
         log.info("parameters received : {}", parameters);
+        StreamInvokeParameter streamInvokeParameter = new StreamInvokeParameter(parameters);
 
-        var id = parameters.getId();
-        AuthenticationTokenHolder.getInstance().setAuthenticationToken(parameters.getAuthorizationToken());
-        this.contingencyTableService.contingecyTable(Long.parseLong(id));
+        var id = streamInvokeParameter.getId();
+        AuthenticationTokenHolder.getInstance().setAuthenticationToken(streamInvokeParameter.getAuthorizationToken());
+        this.contingencyTableService.contingecyTable(id);
 
         return parameters;
     }

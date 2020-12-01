@@ -10,7 +10,13 @@ import java.io.Serializable;
 public class StreamInvokeParameter implements Serializable {
     public static final Long serialVersionUid = 1L;
 
-    private String id;
+    private Long id;
     private String authorizationToken;
 
+    public StreamInvokeParameter(String rawParameter) {
+        String[] params = rawParameter.split("-");
+        this.id = Long.parseLong(params[0]);
+        this.authorizationToken = params[1];
+
+    }
 }
