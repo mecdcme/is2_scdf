@@ -34,20 +34,9 @@ public class BeanConfig {
 
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new LoggingRequestInterceptor());
-        interceptors.add(new AuthenticationInterceptors());
 
         restTemplate.setInterceptors(interceptors);
 
         return restTemplate;
-    }
-
-    class AuthenticationInterceptors implements ClientHttpRequestInterceptor {
-        @Override
-        public ClientHttpResponse intercept(HttpRequest httpRequest, byte[] bytes, ClientHttpRequestExecution clientHttpRequestExecution) throws IOException {
-            log.info("add Authorization token");
-            ClientHttpResponse response = clientHttpRequestExecution.execute(httpRequest, bytes);
-            response.getHeaders().add("Authorization", AuthenticationTokenHolder.getInstance().getAuthenticationToken());
-            return response;
-        }
     }
 }
