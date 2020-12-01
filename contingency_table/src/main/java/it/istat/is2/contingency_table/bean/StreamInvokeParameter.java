@@ -14,7 +14,7 @@ public class StreamInvokeParameter implements Serializable {
     private String authorizationToken;
 
     public StreamInvokeParameter(String rawParameter) {
-        String[] params = rawParameter.split("-");
+        String[] params = rawParameter.split("$");
         this.id = Long.parseLong(params[0]);
         this.authorizationToken = params[1];
 
