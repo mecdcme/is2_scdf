@@ -1,4 +1,4 @@
-package it.istat.is2.contingency_table.bean;
+package it.istat.is2.matching_records.bean;
 
 
 public class AuthenticationTokenHolder {

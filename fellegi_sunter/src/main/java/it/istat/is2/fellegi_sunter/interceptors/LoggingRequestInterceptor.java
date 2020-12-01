@@ -1,5 +1,6 @@
 package it.istat.is2.fellegi_sunter.interceptors;
 
+import it.istat.is2.fellegi_sunter.bean.AuthenticationTokenHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpRequest;
@@ -17,6 +18,7 @@ public class LoggingRequestInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+        request.getHeaders().add("Authorization", AuthenticationTokenHolder.getInstance().getAuthenticationToken());
         logRequest(request, body);
         ClientHttpResponse response = execution.execute(request, body);
         logResponse(response);

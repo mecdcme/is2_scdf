@@ -1,4 +1,4 @@
-package it.istat.is2.contingency_table.bean;
+package it.istat.is2.fellegi_sunter.bean;
 
 import lombok.Data;
 import lombok.ToString;
@@ -20,8 +20,4 @@ public class StreamInvokeParameter implements Serializable {
 
     }
 
-    public static void main(String[] args) {
-        StreamInvokeParameter d = new StreamInvokeParameter("4|hfdwejfhewfhewfhejwfhewhfi");
-        System.out.println(d);
-    }
 }

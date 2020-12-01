@@ -1,4 +1,4 @@
-package it.istat.is2.contingency_table.bean;
+package it.istat.is2.fellegi_sunter.bean;
 
 
 public class AuthenticationTokenHolder {

@@ -1,5 +1,7 @@
 package it.istat.is2.fellegi_sunter;
 
+import it.istat.is2.fellegi_sunter.bean.AuthenticationTokenHolder;
+import it.istat.is2.fellegi_sunter.bean.StreamInvokeParameter;
 import it.istat.is2.fellegi_sunter.service.FellegiSunterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -32,7 +34,10 @@ public class FellegiSunterApplication {
 
         log.info("parameters received : {}", parameters);
 
-        var id = Long.parseLong(parameters);
+        StreamInvokeParameter streamInvokeParameter = new StreamInvokeParameter(parameters);
+        AuthenticationTokenHolder.getInstance().setAuthenticationToken(streamInvokeParameter.getAuthorizationToken());
+        var id = streamInvokeParameter.getId();
+
         this.fellegiSunterService.fellegiSunter(id);
 
         return parameters;

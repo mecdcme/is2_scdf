@@ -1,5 +1,7 @@
 package it.istat.is2.matching_records;
 
+import it.istat.is2.matching_records.bean.AuthenticationTokenHolder;
+import it.istat.is2.matching_records.bean.StreamInvokeParameter;
 import it.istat.is2.matching_records.service.MatchingRecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,10 @@ public class MatchingRecordsApplication {
 
         log.info("parameters received : {}", parameters);
 
-        var id = Long.parseLong(parameters);
+        StreamInvokeParameter streamInvokeParameter = new StreamInvokeParameter(parameters);
+        AuthenticationTokenHolder.getInstance().setAuthenticationToken(streamInvokeParameter.getAuthorizationToken());
+        var id = streamInvokeParameter.getId();
+
         this.matchingRecordService.matchingRecord(id);
 
         return parameters;
