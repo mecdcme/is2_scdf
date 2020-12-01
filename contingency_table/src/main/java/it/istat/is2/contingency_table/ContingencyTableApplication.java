@@ -47,7 +47,7 @@ public class ContingencyTableApplication {
 
         var id = parameters.getId();
         AuthenticationTokenHolder.getInstance().setAuthenticationToken(parameters.getAuthorizationToken());
-        this.contingencyTableService.contingecyTable(id);
+        this.contingencyTableService.contingecyTable(Long.parseLong(id));
 
         return parameters;
     }
