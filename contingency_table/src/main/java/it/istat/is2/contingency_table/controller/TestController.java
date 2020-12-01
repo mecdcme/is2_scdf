@@ -1,5 +1,6 @@
 package it.istat.is2.contingency_table.controller;
 
+import it.istat.is2.contingency_table.bean.AuthenticationTokenHolder;
 import it.istat.is2.contingency_table.service.ContingencyTableService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,10 @@ public class TestController {
     }
 
     @GetMapping("/test")
-    public ResponseEntity<String> test(@RequestParam("id") Long id) throws Exception {
+    public ResponseEntity<String> test(@RequestParam("id") Long id, @RequestParam("authorization") String authorization) throws Exception {
 
-
-        log.info("started method test .. whit id = {}", id);
+        log.info("started method test .. whit id = {} and authorizationToekm", id, authorization);
+        AuthenticationTokenHolder.getInstance().setAuthenticationToken(authorization);
 
         this.contingencyTableService.contingecyTable(id);
         return ResponseEntity.ok("execution contingency table ok");
