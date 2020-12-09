@@ -1,22 +1,23 @@
 package it.istat.is2.matching_records.bean;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 @Data
 @ToString
 public class StreamInvokeParameter implements Serializable {
-    public static final Long serialVersionUid = 1L;
 
-    private Long id;
-    private String authorizationToken;
+	private static final long serialVersionUID = 1L;
 
-    public StreamInvokeParameter(String rawParameter) {
-        String[] params = rawParameter.split("\\|");
-        this.id = Long.parseLong(params[0]);
-        this.authorizationToken = params[1];
+	private Long id;
+	private String authorizationToken;
 
-    }
+	public StreamInvokeParameter(String rawParameter) {
+		String[] params = rawParameter.split("\\|");
+		this.id = Long.parseLong(params[0]);
+		this.authorizationToken = params[1];
+
+	}
 }
